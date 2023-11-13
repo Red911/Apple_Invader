@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class InvaderCollision : MonoBehaviour
 {
     private LeGang leGang;
+
 
     void Start()
     {
@@ -15,8 +18,17 @@ public class InvaderCollision : MonoBehaviour
     {
         if (c.gameObject.layer == 6)
         {
+            if (leGang.TimerCollision > 0) return;
+            leGang.TimerCollision = 1f;
+
             leGang.GoingRight = !leGang.GoingRight;
             leGang.GoDown();
         }
+    }
+
+    public void GetDestroyed()
+    {
+        leGang.InvaderCount--;
+        Destroy(gameObject);
     }
 }

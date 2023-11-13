@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LeGang : MonoBehaviour
@@ -9,20 +10,28 @@ public class LeGang : MonoBehaviour
     [SerializeField] private float speedX = 10;
     [SerializeField] private float movementDownDistance = 20;
     private bool goingRight;
+    private float timerCollision;
+    private int invaderCount;
 
     public bool GoingRight { get => goingRight; set => goingRight = value; }
+    public float TimerCollision { get => timerCollision; set => timerCollision = value; }
+    public int InvaderCount { get => invaderCount; set => invaderCount = value; }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<Transform>();
         GoingRight = true;
+
+        invaderCount = GetComponentsInChildren<InvaderCollision>().Count();
     }
 
     void Update()
     {
+        if (timerCollision > 0) timerCollision = Mathf.Clamp(timerCollision - Time.deltaTime, 0f, 1f);
+
         float move = GoingRight ? 1 : -1;
-        rb.velocity = new Vector2(move * speedX * 100 * Time.deltaTime, 0);
+        rb.velocity = new Vector2(move * speedX * 100 * (14 - invaderCount) * Time.deltaTime, 0);
     }
 
     public void GoDown()
