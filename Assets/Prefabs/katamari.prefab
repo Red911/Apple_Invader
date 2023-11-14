@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5517259492636277374}
   - component: {fileID: 446299412837520496}
   m_Layer: 7
-  m_Name: invader
+  m_Name: katamari
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
