@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ScreenGlitchMat
-  m_Shader: {fileID: -6465566751694194690, guid: f82dc2cca2ab1844abf989da9750a10a, type: 3}
+  m_Name: Mat_FullScene_BWDep
+  m_Shader: {fileID: -6465566751694194690, guid: d1aa127b436514d45b3c6d0edea35808, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -54,12 +54,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _GlitchStrength: 0
-    - _NoiseAmount: 0
-    - _ScanLinesStrengh: 1
+    - _Float: 0
+    - _LightShadowThresold: 0.495
+    - _LightShadowTransitionSize: 0.506
+    - _t: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TestColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
