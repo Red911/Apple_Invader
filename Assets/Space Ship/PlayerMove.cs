@@ -7,6 +7,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform shootPoint;
     [SerializeField] private GameObject peanut;
+    [SerializeField] private GameObject shootParticles;
+    [SerializeField] private GameObject missileParticles;
     [SerializeField] private float speed = 20;
 
     [SerializeField] private float timerShootMax = .8f;
@@ -35,5 +37,9 @@ public class PlayerMove : MonoBehaviour
         timerShoot = timerShootMax;
 
         GameObject p = Instantiate(peanut, shootPoint);
+        GameObject shootPart = Instantiate(shootParticles);
+        shootPart.transform.position = shootPoint.transform.position;
+        GameObject missilePart = Instantiate(missileParticles);
+        missilePart.GetComponent<missileParticles>().missile = p;
     }
 }
