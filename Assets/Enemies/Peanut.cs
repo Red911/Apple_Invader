@@ -10,12 +10,14 @@ public class Peanut : MonoBehaviour
     [SerializeField] private float lifetime = 3;
     [SerializeField] private GameObject tumorMask;
     [SerializeField] private GameObject endMask;
+    public Animator camAnimator;
     public float maxMaskSize = 15.0f;
     public float minMaskSize = 10.0f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        camAnimator = GameObject.Find("Main Camera").GetComponent<Animator>();
 
         Destroy(gameObject, lifetime);
     }
@@ -39,6 +41,12 @@ public class Peanut : MonoBehaviour
                 x = m * (float)LeGang.invaderCount + b;
                 Debug.Log(x);
                 newMask.transform.localScale = new Vector3(x, x, 1);
+                if (LeGang.invaderCount > 9)
+                    camAnimator.SetTrigger("blur1");
+                else if (LeGang.invaderCount > 4)
+                    camAnimator.SetTrigger("blur2");
+                else
+                    camAnimator.SetTrigger("blur3");
             }
             else
             {

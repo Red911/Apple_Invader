@@ -123,6 +123,90 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &15939160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 15939161}
+  - component: {fileID: 15939162}
+  m_Layer: 0
+  m_Name: youdied
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &15939161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15939160}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1171649689}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &15939162
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15939160}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 2
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: c9644435574f14f438628e6baf263038, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 1
+  m_SpriteSortPoint: 0
 --- !u!4 &56858769 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1050843556819333013, guid: 941f2d350a7bbaa459632c14d6b92ab9, type: 3}
@@ -350,6 +434,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PinkInvader1
       objectReference: {fileID: 0}
+    - target: {fileID: 446299412837520496, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
+      propertyPath: camAnimator
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3533162005698804256, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
@@ -626,6 +714,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowInvader2
       objectReference: {fileID: 0}
+    - target: {fileID: 446299412837520496, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
+      propertyPath: camAnimator
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3533162005698804256, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2
@@ -1274,6 +1366,8 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420035}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1312,7 +1406,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1495,6 +1589,44 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &519420034
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2ac3d16721efd014fbe6ab28b970602c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 0
+  sharedProfile: {fileID: 11400000, guid: c85978d369d9ac448aa6dc5682a1ab44, type: 2}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,6 +1894,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PinkInvader2
       objectReference: {fileID: 0}
+    - target: {fileID: 446299412837520496, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
+      propertyPath: camAnimator
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3533162005698804256, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
@@ -1871,6 +2007,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PinkInvader4
       objectReference: {fileID: 0}
+    - target: {fileID: 446299412837520496, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
+      propertyPath: camAnimator
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3533162005698804256, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -2217,6 +2357,90 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1050843556819333013, guid: 941f2d350a7bbaa459632c14d6b92ab9, type: 3}
   m_PrefabInstance: {fileID: 922338895}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &926714321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 926714322}
+  - component: {fileID: 926714323}
+  m_Layer: 0
+  m_Name: youcured
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &926714322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926714321}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1171649689}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &926714323
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926714321}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 2
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: f94c440790cd97946bd99ea097b50e09, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 1
+  m_SpriteSortPoint: 0
 --- !u!1001 &1070816113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2229,6 +2453,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PinkInvader5
       objectReference: {fileID: 0}
+    - target: {fileID: 446299412837520496, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
+      propertyPath: camAnimator
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3533162005698804256, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3
@@ -2307,6 +2535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowInvader1
       objectReference: {fileID: 0}
+    - target: {fileID: 446299412837520496, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
+      propertyPath: camAnimator
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3533162005698804256, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
@@ -2592,9 +2824,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 21.447424, y: 12.168751, z: 12.168751}
+  m_LocalScale: {x: 21, y: 21, z: 21}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 15939161}
+  - {fileID: 926714322}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1223727334
@@ -2679,6 +2913,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueInvader4
       objectReference: {fileID: 0}
+    - target: {fileID: 446299412837520496, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
+      propertyPath: camAnimator
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3533162005698804256, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -2824,6 +3062,7 @@ GameObject:
   - component: {fileID: 1416198170}
   - component: {fileID: 1416198171}
   - component: {fileID: 1416198172}
+  - component: {fileID: 1416198173}
   m_Layer: 0
   m_Name: Vaisseau
   m_TagString: Untagged
@@ -2943,6 +3182,9 @@ MonoBehaviour:
   peanut: {fileID: 3582567388879917725, guid: b63c0319113438d409e275f3c8955394, type: 3}
   shootParticles: {fileID: 301334195609811152, guid: 7662a0d987863624b959c261e7031dfa, type: 3}
   missileParticles: {fileID: 1274137106484452742, guid: 5b560b84ebcc90242a03bbad0cb9f9aa, type: 3}
+  endMask: {fileID: 4467816293162254905, guid: cac1bafeda50bd748a70cd0dad22c93d, type: 3}
+  youdied: {fileID: 15939160}
+  youwon: {fileID: 926714321}
   speed: 10
   timerShootMax: 0.8
 --- !u!70 &1416198172
@@ -2977,8 +3219,43 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.005364496, y: -0.3523946}
-  m_Size: {x: 1.2682314, y: 0.42396265}
+  m_Offset: {x: -0.007999461, y: -0.3336849}
+  m_Size: {x: 1.2949601, y: 0.38654345}
+  m_Direction: 1
+--- !u!70 &1416198173
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416198167}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0021734552, y: -0.26067153}
+  m_Size: {x: 1.4716682, y: 0.62805396}
   m_Direction: 1
 --- !u!1001 &1417646894
 PrefabInstance:
@@ -3062,6 +3339,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueInvader2
       objectReference: {fileID: 0}
+    - target: {fileID: 446299412837520496, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
+      propertyPath: camAnimator
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3533162005698804256, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2
@@ -3136,6 +3417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueInvader3
       objectReference: {fileID: 0}
+    - target: {fileID: 446299412837520496, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
+      propertyPath: camAnimator
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3533162005698804256, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3210,6 +3495,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowInvader3
       objectReference: {fileID: 0}
+    - target: {fileID: 446299412837520496, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
+      propertyPath: camAnimator
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3533162005698804256, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3505,6 +3794,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowInvader4
       objectReference: {fileID: 0}
+    - target: {fileID: 446299412837520496, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
+      propertyPath: camAnimator
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3533162005698804256, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -3928,6 +4221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PinkInvader3
       objectReference: {fileID: 0}
+    - target: {fileID: 446299412837520496, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
+      propertyPath: camAnimator
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3533162005698804256, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1
@@ -4067,7 +4364,7 @@ Transform:
   m_GameObject: {fileID: 2072427313}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.18, z: 0}
+  m_LocalPosition: {x: 1, y: 3.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4230,6 +4527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueInvader1
       objectReference: {fileID: 0}
+    - target: {fileID: 446299412837520496, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
+      propertyPath: camAnimator
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 1389227230785420028, guid: 22d392dfae68f694b9451ef35332d145, type: 3}
       propertyPath: m_IsActive
       value: 1
