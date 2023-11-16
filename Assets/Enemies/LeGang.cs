@@ -26,7 +26,6 @@ public class LeGang : MonoBehaviour
         GoingRight = true;
 
         invaderCount = GetComponentsInChildren<InvaderCollision>().Count();
-        Debug.Log(invaderCount);
     }
 
     void Update()

@@ -57,7 +57,7 @@ public class PlayerMove : MonoBehaviour
         {
             canShoot = false;
             canMove = false;
-            GameObject newMask = Instantiate(endMask, transform);
+            GameObject newMask = Instantiate(endMask);
             Destroy(GetComponent<CapsuleCollider2D>());
             music.Stop();
             glitchMat.stopGlitch = true;

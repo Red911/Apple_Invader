@@ -21,6 +21,9 @@ public class Peanut : MonoBehaviour
     private sfxManager sfxManager;
     static public int hitSound = 6;
 
+    private Animator mainLineAnimator;
+    private Animator[] secondLinesAnimator = new Animator[4];
+
     public Transform PlayerTf { get => playerTf; set => playerTf = value; }
 
     void Start()
@@ -28,6 +31,18 @@ public class Peanut : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         camAnimator = GameObject.Find("Main Camera").GetComponent<Animator>();
         sfxManager = GameObject.Find("AudioManager").GetComponent<sfxManager>();
+        if (GameObject.Find("MainLine") != null)
+            mainLineAnimator = GameObject.Find("MainLine").GetComponent<Animator>();
+
+        int i = 0;
+        foreach (var gameObj in FindObjectsOfType(typeof(GameObject)) as GameObject[])
+        {
+            if (gameObj.name == "SecondLine")
+            {
+                secondLinesAnimator[i] = gameObj.GetComponent<Animator>();
+                i++;
+            }
+        }
 
         Destroy(gameObject, lifetime);
     }
@@ -65,7 +80,6 @@ public class Peanut : MonoBehaviour
             else
             {
                 GameObject newMask = Instantiate(endMask);
-                newMask.transform.position = c.gameObject.transform.position;
             }
 
             if (SetShader.spawnSouvenirs)
@@ -77,10 +91,30 @@ public class Peanut : MonoBehaviour
                 else if (LeGang.invaderCount == 8)
                 {
                     GameObject souvenirInst = Instantiate(souvenir02);
+                    if (mainLineAnimator != null)
+                        mainLineAnimator.SetTrigger("mvmt");
+                   for (int i = 0; i < secondLinesAnimator.Length; i++)
+                    {
+                        if (secondLinesAnimator[i] != null)
+                            secondLinesAnimator[i].SetTrigger("mvmt");
+                   }
                 }
                 else if (LeGang.invaderCount == 4)
                 {
                     GameObject souvenirInst = Instantiate(souvenir03);
+                    if (mainLineAnimator != null)
+                        mainLineAnimator.SetTrigger("brutal");
+                    for (int i = 0; i < secondLinesAnimator.Length; i++)
+                    {
+                        if (secondLinesAnimator[i] != null)
+                            secondLinesAnimator[i].SetTrigger("brutal");
+                    }
+                }
+                else if (LeGang.invaderCount == 2)
+                {
+                    if (mainLineAnimator != null)
+                        mainLineAnimator.SetTrigger("break");
+
                 }
             }
 

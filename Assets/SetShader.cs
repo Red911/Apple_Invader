@@ -20,6 +20,8 @@ public class SetShader : MonoBehaviour
     [Header("Background")] 
     [SerializeField] private KeyCode backGroundDesactivate;
     [SerializeField] private GameObject[] backgroundObjects;
+    [SerializeField] private Animator mainline;
+    [SerializeField] private Animator[] secondlines = new Animator[4];
 
     [Header("Mask")]
     [SerializeField] private KeyCode maskDesactivate;
@@ -77,10 +79,37 @@ public class SetShader : MonoBehaviour
 
         if (Input.GetKeyDown(backGroundDesactivate))
         {
-            
             for (int i = 0; i < backgroundObjects.Length; i++)
             {
                 backgroundObjects[i].SetActive(!backgroundObjects[i].activeInHierarchy);
+            }
+
+            if (LeGang.invaderCount <= 7 && LeGang.invaderCount > 3)
+            {
+                if (mainline != null)
+                    mainline.SetTrigger("mvmt");
+                for (int i = 0; i < secondlines.Length; i++)
+                {
+                    if (secondlines[i] != null)
+                        secondlines[i].SetTrigger("mvmt");
+                }
+            }
+            else if (LeGang.invaderCount <= 3)
+            {
+                if (mainline != null)
+                    mainline.SetTrigger("brutal");
+                for (int i = 0; i < secondlines.Length; i++)
+                {
+                    if (secondlines[i] != null)
+                        secondlines[i].SetTrigger("brutal");
+                }
+            }
+            
+            if (LeGang.invaderCount <= 1)
+            {
+                if (mainline != null)
+                    mainline.SetTrigger("break");
+
             }
         }
 

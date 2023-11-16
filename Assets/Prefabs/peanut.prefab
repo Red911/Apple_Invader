@@ -79,7 +79,7 @@ MonoBehaviour:
   speed: 4
   lifetime: 2
   tumorMask: {fileID: 4467816293162254905, guid: 1a024c8d0ec8b1e47a8b1bd4825cb1f8, type: 3}
-  endMask: {fileID: 4467816293162254905, guid: cac1bafeda50bd748a70cd0dad22c93d, type: 3}
+  endMask: {fileID: 7143291387695965485, guid: 8f70464b108f7c947885abdd0259f88b, type: 3}
   souvenir01: {fileID: 4198734990687231619, guid: f72d32357b3006445848d018ac026448, type: 3}
   souvenir02: {fileID: 7018717513657546823, guid: 1943c2a5c7d62b340a94e7294e230857, type: 3}
   souvenir03: {fileID: 3561412009024183603, guid: a034e9d8a8cce1e428facda015e4b716, type: 3}
