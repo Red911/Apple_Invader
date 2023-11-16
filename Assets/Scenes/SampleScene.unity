@@ -3344,6 +3344,10 @@ MonoBehaviour:
   musicDesactivate: 288
   music: {fileID: 519420033}
   souvenirsDesactivate: 289
+  shakeDesactivate: 290
+  shake: {fileID: 519420036}
+  animVaisseauDesactivate: 291
+  vaisseau: {fileID: 1416198171}
 --- !u!4 &1385558942
 Transform:
   m_ObjectHideFlags: 0

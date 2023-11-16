@@ -7,6 +7,14 @@ public class Shake : MonoBehaviour
     private bool startShake;
     [SerializeField] private AnimationCurve curve;
     [SerializeField] private float duration = 1f;
+    private bool canShake;
+
+    public bool CanShake { get => canShake; set => canShake = value; }
+
+    private void Start()
+    {
+        canShake = true;
+    }
 
     private void Update()
     {
@@ -35,6 +43,7 @@ public class Shake : MonoBehaviour
 
     public void StartShake(float d)
     {
+        if (!canShake) return;
         startShake = true;
         duration = d;
     }

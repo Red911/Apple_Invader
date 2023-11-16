@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,14 +22,18 @@ public class PlayerMove : MonoBehaviour
     private float timerShoot;
     private bool canShoot = true;
     private bool canMove = true;
+    private bool useAnimations = true;
 
     static public int shootSound = 7;
+
+    public bool UseAnimations { get => useAnimations; set => useAnimations = value; }
 
     // Update is called once per frame
 
     private void Start()
     {
         an = GetComponent<Animator>();
+        useAnimations = true;
     }
     void Update()
     {
@@ -76,11 +81,11 @@ public class PlayerMove : MonoBehaviour
 
         if (c.gameObject.layer == 6)
         {
-            if (transform.position.x < c.transform.position.x)
+            if (transform.position.x < c.transform.position.x && useAnimations)
             {
                 an.SetTrigger("Wall_ShakeR");
             }
-            else
+            else if (useAnimations)
             {
                 an.SetTrigger("Wall_ShakeL");
             }
@@ -94,7 +99,8 @@ public class PlayerMove : MonoBehaviour
         timerShoot = timerShootMax;
 
         //shake.StartShake(.2f);
-        an.SetTrigger("Shoot");
+        if (useAnimations)
+            an.SetTrigger("Shoot");
 
         GameObject p = Instantiate(peanut, shootPoint);
 

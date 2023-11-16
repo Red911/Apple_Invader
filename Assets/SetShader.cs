@@ -53,6 +53,14 @@ public class SetShader : MonoBehaviour
     [SerializeField] private KeyCode souvenirsDesactivate;
     static public bool spawnSouvenirs = true;
 
+    [Header("shake")]
+    [SerializeField] private KeyCode shakeDesactivate;
+    [SerializeField] private Shake shake;
+
+    [Header("anim vaisseau")]
+    [SerializeField] private KeyCode animVaisseauDesactivate;
+    [SerializeField] private PlayerMove vaisseau;
+
     private void Awake()
     {
         depthOfField = postProcess.profile.components[0];
@@ -187,6 +195,16 @@ public class SetShader : MonoBehaviour
                     Destroy(gameObj);
                 }
             }
+        }
+
+        if (Input.GetKeyDown(shakeDesactivate))
+        {
+            shake.CanShake = !shake.CanShake;
+        }
+
+        if (Input.GetKeyDown(animVaisseauDesactivate))
+        {
+            vaisseau.UseAnimations = !vaisseau.UseAnimations;
         }
     }
 
