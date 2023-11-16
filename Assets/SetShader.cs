@@ -21,7 +21,6 @@ public class SetShader : MonoBehaviour
     [SerializeField] private KeyCode backGroundDesactivate;
     [SerializeField] private GameObject[] backgroundObjects;
 
-
     [Header("Mask")]
     [SerializeField] private KeyCode maskDesactivate;
     static public bool spawnMask  = true;
@@ -38,6 +37,20 @@ public class SetShader : MonoBehaviour
     [SerializeField] private KeyCode glitchDesactivate;
     static public bool glitchEnabled = true;
 
+    [Header("sfx")]
+    [SerializeField] private KeyCode sfxDesactivate;
+    [SerializeField] private GameObject whiteNoise;
+    [SerializeField] private GameObject deplacementSound;
+    static public bool spawnSfx = true;
+
+    [Header("music")]
+    [SerializeField] private KeyCode musicDesactivate;
+    [SerializeField] public AudioSource music;
+
+    [Header("souvenirs")]
+    [SerializeField] private KeyCode souvenirsDesactivate;
+    static public bool spawnSouvenirs = true;
+
     private void Awake()
     {
         depthOfField = postProcess.profile.components[0];
@@ -45,6 +58,9 @@ public class SetShader : MonoBehaviour
         spawnParticles = true;
         spawnMask = true;
         glitchEnabled = true;
+        spawnSfx = true;
+        spawnSouvenirs = true;
+        music.volume = 1.0f;
     }
 
     void Update()
@@ -100,6 +116,48 @@ public class SetShader : MonoBehaviour
         if (Input.GetKeyDown(glitchDesactivate))
         {
             glitchEnabled = !glitchEnabled;
+        }
+
+        if(Input.GetKeyDown(sfxDesactivate))
+        {
+            spawnSfx = !spawnSfx;
+            whiteNoise.SetActive(!whiteNoise.activeInHierarchy);
+            if (whiteNoise.activeInHierarchy)
+                whiteNoise.gameObject.GetComponent<AudioSource>().Play();
+            deplacementSound.SetActive(!deplacementSound.activeInHierarchy);
+            if (deplacementSound.activeInHierarchy)
+                deplacementSound.gameObject.GetComponent<AudioSource>().Play();
+
+            if (!spawnSfx)
+            {
+                foreach (var gameObj in FindObjectsOfType(typeof(GameObject)) as GameObject[])
+                {
+                    if (gameObj.name == "AudioShot(Clone)")
+                    {
+                        Destroy(gameObj);
+                    }
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(musicDesactivate))
+        {
+            if (music.volume == 1.0f)
+                music.volume = 0.0f;
+            else
+                music.volume = 1.0f;
+        }
+
+        if (Input.GetKeyDown(souvenirsDesactivate))
+        {
+            spawnSouvenirs = !spawnSouvenirs;
+            foreach (var gameObj in FindObjectsOfType(typeof(GameObject)) as GameObject[])
+            {
+                if (gameObj.name == "Souvenir01(Clone)" || gameObj.name == "Souvenir02(Clone)" || gameObj.name == "Souvenir03(Clone)")
+                {
+                    Destroy(gameObj);
+                }
+            }
         }
     }
 

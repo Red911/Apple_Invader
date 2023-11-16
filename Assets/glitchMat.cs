@@ -5,8 +5,13 @@ using UnityEngine;
 public class glitchMat : MonoBehaviour
 {
     public Material mat;
+    public AudioSource whiteNoise;
+    public AudioSource alienDeplacement;
+    public sfxManager sfxManager;
+
     private float multipier = 0.0f;
     static public bool stopGlitch = false;
+
 
     private void Start()
     {
@@ -16,13 +21,52 @@ public class glitchMat : MonoBehaviour
     void Update()
     {
         if (LeGang.invaderCount > 10)
+        {
             multipier = 0.0f;
+            whiteNoise.volume = 0.0f;
+            PlayerMove.shootSound = 7;
+            Peanut.hitSound = 6;
+            alienDeplacement.clip = sfxManager.sfx[5];
+            if (!alienDeplacement.isPlaying && SetShader.spawnSfx)
+                alienDeplacement.Play();
+        }
         else if (LeGang.invaderCount > 7)
+        {
             multipier = 0.7f;
-        else if (LeGang.invaderCount > 4)
+            whiteNoise.volume = 0.3f;
+            PlayerMove.shootSound = 7;
+            Peanut.hitSound = 6;
+            alienDeplacement.clip = sfxManager.sfx[5];
+            if (!alienDeplacement.isPlaying && SetShader.spawnSfx)
+                alienDeplacement.Play();
+        }
+        else if (LeGang.invaderCount > 3)
+        {
             multipier = 2.0f;
-        else
+            whiteNoise.volume = 0.6f;
+            PlayerMove.shootSound = 12;
+            Peanut.hitSound = 11;
+            alienDeplacement.clip = sfxManager.sfx[10];
+            if (!alienDeplacement.isPlaying && SetShader.spawnSfx)
+                alienDeplacement.Play();
+        }
+        else if (LeGang.invaderCount > 0)
+        {
             multipier = 7.0f;
+            whiteNoise.volume = 1.0f;
+            PlayerMove.shootSound = 2;
+            Peanut.hitSound = 1;
+            alienDeplacement.clip = sfxManager.sfx[0];
+            alienDeplacement.volume = 0.6f;
+            if (!alienDeplacement.isPlaying && SetShader.spawnSfx)
+                alienDeplacement.Play();
+        }
+        else
+        {
+            multipier = 0.0f;
+            whiteNoise.volume = 0.0f;
+            alienDeplacement.volume = 0.0f;
+        }
 
         if (SetShader.glitchEnabled && !stopGlitch)
         {

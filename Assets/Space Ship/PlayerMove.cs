@@ -11,8 +11,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private GameObject shootParticles;
     [SerializeField] private GameObject missileParticles;
     [SerializeField] private GameObject endMask;
-    [SerializeField] private GameObject youdied;
-    [SerializeField] private GameObject youwon;
+    [SerializeField] private sfxManager sfxManager;
+    [SerializeField] private AudioSource music;
     [SerializeField] private float speed = 20;
 
     [SerializeField] private float timerShootMax = .8f;
@@ -20,10 +20,7 @@ public class PlayerMove : MonoBehaviour
     private bool canShoot = true;
     private bool canMove = true;
 
-    void Start()
-    {
-        
-    }
+    static public int shootSound = 7;
 
     // Update is called once per frame
     void Update()
@@ -43,10 +40,14 @@ public class PlayerMove : MonoBehaviour
 
         if (timerShoot > 0) timerShoot = Mathf.Clamp(timerShoot - Time.deltaTime, 0f, timerShootMax);
 
-        if (LeGang.invaderCount <= 0)
+        if (LeGang.invaderCount == 0)
         {
             canMove = false;
             canShoot = false;
+            music.Stop();
+            glitchMat.stopGlitch = true;
+            sfxManager.playSound(9, 1.0f);
+            LeGang.invaderCount--;
         }
     }
 
@@ -57,10 +58,10 @@ public class PlayerMove : MonoBehaviour
             canShoot = false;
             canMove = false;
             GameObject newMask = Instantiate(endMask, transform);
-            youdied.SetActive(false);
-            youwon.SetActive(true);
             Destroy(GetComponent<CapsuleCollider2D>());
+            music.Stop();
             glitchMat.stopGlitch = true;
+            sfxManager.playSound(9, 1.0f);
         }
     }
 
@@ -70,6 +71,8 @@ public class PlayerMove : MonoBehaviour
         timerShoot = timerShootMax;
 
         GameObject p = Instantiate(peanut, shootPoint);
+
+        if (SetShader.spawnSfx) sfxManager.playSound(shootSound, 1.0f);
 
         if (SetShader.spawnParticles)
         {
