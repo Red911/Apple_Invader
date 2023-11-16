@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
+    private Animator an;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform shootPoint;
     [SerializeField] private GameObject peanut;
@@ -14,6 +15,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private sfxManager sfxManager;
     [SerializeField] private AudioSource music;
     [SerializeField] private float speed = 20;
+    [SerializeField] private Shake shake;
 
     [SerializeField] private float timerShootMax = .8f;
     private float timerShoot;
@@ -23,6 +25,11 @@ public class PlayerMove : MonoBehaviour
     static public int shootSound = 7;
 
     // Update is called once per frame
+
+    private void Start()
+    {
+        an = GetComponent<Animator>();
+    }
     void Update()
     {
         if (Input.GetButtonDown("Jump") && canShoot) Shoot();
@@ -66,12 +73,28 @@ public class PlayerMove : MonoBehaviour
             glitchMat.stopGlitch = true;
             sfxManager.playSound(9, 1.0f);
         }
+
+        if (c.gameObject.layer == 6)
+        {
+            if (transform.position.x < c.transform.position.x)
+            {
+                an.SetTrigger("Wall_ShakeR");
+            }
+            else
+            {
+                an.SetTrigger("Wall_ShakeL");
+            }
+            shake.StartShake(.2f);
+        }
     }
 
     void Shoot()
     {
         if (timerShoot > 0) return;
         timerShoot = timerShootMax;
+
+        //shake.StartShake(.2f);
+        an.SetTrigger("Shoot");
 
         GameObject p = Instantiate(peanut, shootPoint);
 
