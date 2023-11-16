@@ -34,12 +34,17 @@ public class SetShader : MonoBehaviour
     [SerializeField] private KeyCode vignetteDesactivate;
     [SerializeField] private GameObject vignette;
 
+    [Header("Glitch")]
+    [SerializeField] private KeyCode glitchDesactivate;
+    static public bool glitchEnabled = true;
+
     private void Awake()
     {
         depthOfField = postProcess.profile.components[0];
         AbeChromatique = postProcess.profile.components[1];
         spawnParticles = true;
         spawnMask = true;
+        glitchEnabled = true;
     }
 
     void Update()
@@ -90,6 +95,11 @@ public class SetShader : MonoBehaviour
         if (Input.GetKeyDown(vignetteDesactivate))
         {
             vignette.SetActive(!vignette.activeInHierarchy);
+        }
+
+        if (Input.GetKeyDown(glitchDesactivate))
+        {
+            glitchEnabled = !glitchEnabled;
         }
     }
 

@@ -60,6 +60,7 @@ public class PlayerMove : MonoBehaviour
             youdied.SetActive(false);
             youwon.SetActive(true);
             Destroy(GetComponent<CapsuleCollider2D>());
+            glitchMat.stopGlitch = true;
         }
     }
 
