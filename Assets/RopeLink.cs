@@ -89,7 +89,7 @@ public class RopeLink : MonoBehaviour
             firstSegment.posNow = this.StartPoint.position;
             this.ropeSegments[0] = firstSegment;
         }
-        else
+        else if (!StartPoint && EndPoint)
         {
             RopeSegment firstSegment = this.ropeSegments[0];
             firstSegment.posNow = this.EndPoint.position;
