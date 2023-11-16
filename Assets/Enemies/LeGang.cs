@@ -9,6 +9,7 @@ public class LeGang : MonoBehaviour
     private Transform tr;
     [SerializeField] private float speedX = 10;
     [SerializeField] private float movementDownDistance = 20;
+    [SerializeField] private PlayerMove player;
     private bool goingRight;
     private float timerCollision;
     public static int invaderCount;
@@ -16,6 +17,7 @@ public class LeGang : MonoBehaviour
     public bool GoingRight { get => goingRight; set => goingRight = value; }
     public float TimerCollision { get => timerCollision; set => timerCollision = value; }
     public int InvaderCount { get => invaderCount; set => invaderCount = value; }
+    public PlayerMove Player { get => player; set => player = value; }
 
     void Start()
     {
