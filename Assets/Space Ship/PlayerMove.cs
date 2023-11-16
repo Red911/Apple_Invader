@@ -29,7 +29,8 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Jump") && canShoot) Shoot();
-        if (Input.GetButtonDown("Cancel")) SceneManager.LoadScene("SampleScene");
+        if (Input.GetButtonDown("Cancel"))
+            SceneManager.LoadScene("SampleScene");
 
         if (canMove)
         {
@@ -68,9 +69,13 @@ public class PlayerMove : MonoBehaviour
         timerShoot = timerShootMax;
 
         GameObject p = Instantiate(peanut, shootPoint);
-        GameObject shootPart = Instantiate(shootParticles);
-        shootPart.transform.position = shootPoint.transform.position;
-        GameObject missilePart = Instantiate(missileParticles);
-        missilePart.GetComponent<missileParticles>().missile = p;
+
+        if (SetShader.spawnParticles)
+        {
+            GameObject shootPart = Instantiate(shootParticles);
+            shootPart.transform.position = shootPoint.transform.position;
+            GameObject missilePart = Instantiate(missileParticles);
+            missilePart.GetComponent<missileParticles>().missile = p;
+        }
     }
 }

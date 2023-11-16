@@ -33,14 +33,17 @@ public class Peanut : MonoBehaviour
         {
             if (LeGang.invaderCount > 1)
             {
-                GameObject newMask = Instantiate(tumorMask);
-                newMask.transform.position = c.gameObject.transform.position;
-                float x = maxMaskSize;
-                float m = (maxMaskSize - minMaskSize) / (1.0f - 14.0f);
-                float b = 14.0f - m * minMaskSize;
-                x = m * (float)LeGang.invaderCount + b;
-                Debug.Log(x);
-                newMask.transform.localScale = new Vector3(x, x, 1);
+                if (SetShader.spawnMask)
+                {
+                    GameObject newMask = Instantiate(tumorMask);
+                    newMask.transform.position = c.gameObject.transform.position;
+                    float x = maxMaskSize;
+                    float m = (maxMaskSize - minMaskSize) / (1.0f - 14.0f);
+                    float b = 14.0f - m * minMaskSize;
+                    x = m * (float)LeGang.invaderCount + b;
+                    Debug.Log(x);
+                    newMask.transform.localScale = new Vector3(x, x, 1);
+                }
                 if (LeGang.invaderCount > 9)
                     camAnimator.SetTrigger("blur1");
                 else if (LeGang.invaderCount > 4)
