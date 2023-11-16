@@ -30,7 +30,7 @@ public class glitchMat : MonoBehaviour
             if (!alienDeplacement.isPlaying && SetShader.spawnSfx)
                 alienDeplacement.Play();
         }
-        else if (LeGang.invaderCount > 7)
+        else if (LeGang.invaderCount > 8)
         {
             multipier = 0.7f;
             whiteNoise.volume = 0.3f;
@@ -40,7 +40,7 @@ public class glitchMat : MonoBehaviour
             if (!alienDeplacement.isPlaying && SetShader.spawnSfx)
                 alienDeplacement.Play();
         }
-        else if (LeGang.invaderCount > 3)
+        else if (LeGang.invaderCount > 4)
         {
             multipier = 2.0f;
             whiteNoise.volume = 0.6f;
