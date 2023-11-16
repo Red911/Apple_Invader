@@ -28,12 +28,12 @@ public class LeGang : MonoBehaviour
         invaderCount = GetComponentsInChildren<InvaderCollision>().Count();
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         if (timerCollision > 0) timerCollision = Mathf.Clamp(timerCollision - Time.deltaTime, 0f, 1f);
 
         float move = GoingRight ? 1 : -1;
-        rb.velocity = new Vector2(move * speedX * 50 * (14 - invaderCount) * Time.deltaTime, 0);
+        rb.velocity = new Vector2(move * speedX * 25 * (14 - invaderCount) * Time.deltaTime, 0);
     }
 
     public void GoDown()

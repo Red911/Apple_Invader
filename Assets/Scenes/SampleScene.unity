@@ -3434,7 +3434,7 @@ MonoBehaviour:
   endMask: {fileID: 7143291387695965485, guid: 8f70464b108f7c947885abdd0259f88b, type: 3}
   sfxManager: {fileID: 1584512102}
   music: {fileID: 519420033}
-  speed: 10
+  speed: 2
   timerShootMax: 0.8
 --- !u!70 &1416198172
 CapsuleCollider2D:
@@ -5078,7 +5078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce21d529c819c140a44d30d05ae240f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedX: 2
+  speedX: 1
   movementDownDistance: 0.5
   player: {fileID: 0}
 --- !u!4 &2072427316

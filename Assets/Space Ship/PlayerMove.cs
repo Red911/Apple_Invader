@@ -29,15 +29,6 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetButtonDown("Cancel"))
             SceneManager.LoadScene("SampleScene");
 
-        if (canMove)
-        {
-            float move = Input.GetAxis("Horizontal");
-
-            rb.velocity = new Vector2(move * (speed * 100) * Time.deltaTime, 0);
-        }
-        else
-            rb.velocity = new Vector2(0, 0);
-
         if (timerShoot > 0) timerShoot = Mathf.Clamp(timerShoot - Time.deltaTime, 0f, timerShootMax);
 
         if (LeGang.invaderCount == 0)
@@ -49,6 +40,18 @@ public class PlayerMove : MonoBehaviour
             sfxManager.playSound(9, 1.0f);
             LeGang.invaderCount--;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (canMove)
+        {
+            float move = Input.GetAxis("Horizontal");
+
+            rb.velocity = new Vector2(move * (speed * 100) * Time.deltaTime, 0);
+        }
+        else
+            rb.velocity = new Vector2(0, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D c)
