@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
-    private Transform tf;
-    private Animator an;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform shootPoint;
     [SerializeField] private GameObject peanut;
@@ -16,7 +14,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private GameObject youdied;
     [SerializeField] private GameObject youwon;
     [SerializeField] private float speed = 20;
-    [SerializeField] private float rotationOffset = 2f;
 
     [SerializeField] private float timerShootMax = .8f;
     private float timerShoot;
@@ -25,15 +22,15 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
-        tf = transform;
-        an = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Jump") && canShoot) Shoot();
-        if (Input.GetButtonDown("Cancel")) SceneManager.LoadScene("SampleScene");
+        if (Input.GetButtonDown("Cancel"))
+            SceneManager.LoadScene("SampleScene");
 
         if (canMove)
         {
@@ -59,26 +56,10 @@ public class PlayerMove : MonoBehaviour
         {
             canShoot = false;
             canMove = false;
-            if (endMask != null)
-            {
-                GameObject newMask = Instantiate(endMask, transform);
-            }
-
+            GameObject newMask = Instantiate(endMask, transform);
             youdied.SetActive(false);
             youwon.SetActive(true);
             Destroy(GetComponent<CapsuleCollider2D>());
-        }
-
-        if (c.gameObject.layer == 6)
-        {
-            if (c.transform.position.x - tf.position.x > 0)
-            {
-                an.SetTrigger("Wall_ShakeR");
-            }
-            else
-            {
-                an.SetTrigger("Wall_ShakeL");
-            }
         }
     }
 
@@ -88,22 +69,13 @@ public class PlayerMove : MonoBehaviour
         timerShoot = timerShootMax;
 
         GameObject p = Instantiate(peanut, shootPoint);
-        p.GetComponent<Peanut>().PlayerTf = tf;
-        if (shootParticles != null)
+
+        if (SetShader.spawnParticles)
         {
             GameObject shootPart = Instantiate(shootParticles);
             shootPart.transform.position = shootPoint.transform.position;
-        }
-        if(missileParticles != null)
-        {
             GameObject missilePart = Instantiate(missileParticles);
             missilePart.GetComponent<missileParticles>().missile = p;
         }
-
-    }
-
-    public void GetRotated()
-    {
-        tf.Rotate(Vector3.forward, 90f);
     }
 }
