@@ -6,6 +6,7 @@ using UnityEngine;
 public class Peanut : MonoBehaviour
 {
     private Rigidbody2D rb;
+    [SerializeField] private Transform playerTf;
     [SerializeField] private float speed = 10;
     [SerializeField] private float lifetime = 3;
     [SerializeField] private GameObject tumorMask;
@@ -13,6 +14,8 @@ public class Peanut : MonoBehaviour
     public Animator camAnimator;
     public float maxMaskSize = 15.0f;
     public float minMaskSize = 10.0f;
+
+    public Transform PlayerTf { get => playerTf; set => playerTf = value; }
 
     void Start()
     {
@@ -24,7 +27,10 @@ public class Peanut : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(0, (speed * 100) * Time.fixedDeltaTime);
+        Vector2 shootDir = Vector2.up;
+        Debug.Log(shootDir);
+        //rb.velocity = new Vector2(0, (speed * 100) * Time.fixedDeltaTime);
+        rb.velocity = shootDir * speed * 100 * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D (Collider2D c)

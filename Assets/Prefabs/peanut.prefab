@@ -75,10 +75,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9ea94113ea6c6469a29e7b6326a520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTf: {fileID: 0}
   speed: 4
   lifetime: 2
   tumorMask: {fileID: 4467816293162254905, guid: 1a024c8d0ec8b1e47a8b1bd4825cb1f8, type: 3}
   endMask: {fileID: 4467816293162254905, guid: cac1bafeda50bd748a70cd0dad22c93d, type: 3}
+  camAnimator: {fileID: 0}
   maxMaskSize: 15
   minMaskSize: 10
 --- !u!95 &6424218520720937114

@@ -29,6 +29,7 @@ public class InvaderCollision : MonoBehaviour
     public void GetDestroyed()
     {
         leGang.InvaderCount--;
+        //leGang.Player.GetRotated();
         Destroy(gameObject);
     }
 }
